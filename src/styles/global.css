@@ -1,0 +1,210 @@
+:root {
+	/* font */
+	--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	--font-serif: 'Merriweather', Georgia, serif;
+	--font-mono: 'Menlo', 'Monaco', 'Courier New', monospace;
+	--font-dyslexic: 'OpenDyslexic', sans-serif;
+	--font-dyslexic-mono: 'OpenDyslexic Mono', monospace;
+
+	--font-16: 1.6rem;
+	--font-18: 1.8rem;
+	--font-20: 2rem;
+	--font-24: 2.4rem;
+	--font-32: 3.2rem;
+	--font-48: 4.8rem;
+	--font-96: 9.6rem;
+
+	/* spacing */
+	--spacing-4: 0.4rem;
+	--spacing-8: 0.8rem;
+	--spacing-16: 1.6rem;
+	--spacing-24: 2.4rem;
+	--spacing-32: 3.2rem;
+	--spacing-48: 4.8rem;
+	--spacing-64: 6.4rem;
+	--spacing-128: 12.8rem;
+
+	/* post */
+	--post-txt-size: 20px;
+	--post-txt-length: 70ch;
+	--post-txt-height: 32px;
+
+	/* scrollbar */
+	--clr-scrollbar-thumb: hsl(173 10% 20%);
+
+	/* shadows */
+	--shadow-sm: 0px 0px 4px 4px hsl(0 0% 0% / 4%);
+	--shadow-md: 0px 0px 10px 4px hsl(0 0% 0% / 10%);
+	--shadow-lg: 0px 0px 20px 8px hsl(0 0% 0% / 20%);
+
+	/* border radius */
+	--rounded-4: 4px;
+	--rounded-20: 20px;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-padding-top: var(--spacing-64);
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+	scrollbar-color: var(--clr-scrollbar-thumb) transparent;
+	view-transition-name: none;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	font-family: var(--font-serif);
+	font-size: var(--post-txt-size);
+	color: var(--clr-txt);
+	background-color: var(--clr-bg);
+
+	&::before {
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		background-image: linear-gradient(
+			to bottom,
+			hsl(225 74% 40%),
+			hsl(270 70% 40%)
+		);
+		opacity: 0.1;
+		z-index: -1;
+	}
+}
+
+*:focus {
+	outline: none;
+}
+
+*:focus-visible {
+	box-shadow: 0 0 0 4px var(--clr-primary);
+	border-radius: var(--rounded-20);
+}
+
+html[data-font='dyslexic'] :is(body, h1, h2, h3) {
+	font-family: var(--font-dyslexic);
+}
+
+html[data-font='dyslexic'] h1 {
+	font-size: clamp(var(--font-24), 4vw, var(--font-32));
+	line-height: clamp(32px, 6vw, 48px);
+}
+
+html[data-font='dyslexic'] h2 {
+	font-size: var(--font-24);
+	line-height: 32px;
+}
+
+h1,
+h2,
+h3 {
+	font-weight: 400;
+}
+
+h1,
+h2 {
+	font-family: var(--font-sans);
+	text-transform: capitalize;
+}
+
+h1 {
+	font-size: clamp(var(--font-32), 4vw, var(--font-48));
+	line-height: clamp(32px, 6vw, 40px);
+	text-wrap: balance;
+}
+
+h2 {
+	font-size: clamp(var(--font-24), 4vw, var(--font-32));
+}
+
+h3 {
+	font-size: var(--font-24);
+	line-height: 32px;
+}
+
+p {
+	line-height: 32px;
+}
+
+a {
+	position: relative;
+	color: var(--clr-link-txt);
+	text-decoration: none;
+	transition: color 0.3s ease;
+
+	&:hover {
+		color: var(--clr-primary);
+
+		&::before {
+			transform: scaleX(1);
+		}
+	}
+
+	&::before {
+		content: '';
+		width: 100%;
+		height: 100%;
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.3s ease;
+		background-color: var(--clr-link-background);
+		border-radius: 4px;
+		z-index: -1;
+	}
+}
+
+table {
+	margin-bottom: var(--spacing-32);
+	border-collapse: collapse;
+}
+
+th,
+td {
+	padding: var(--spacing-16);
+	text-align: left;
+	border: 1px solid hsl(0 0% 100% / 40%);
+}
+
+img,
+iframe,
+lite-youtube {
+	border-radius: var(--rounded-20);
+}
+
+lite-youtube {
+	box-shadow: var(--shadow-lg);
+	margin-inline: auto;
+}
+
+lite-youtube::before {
+	background: none;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+@media (prefers-reduced-motion) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+}

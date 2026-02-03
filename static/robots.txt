@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /drafts/
+Sitemap: https://blackkspydo.com/sitemap.xml
