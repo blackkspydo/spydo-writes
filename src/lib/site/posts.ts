@@ -34,6 +34,13 @@ export async function getPosts() {
 	return posts
 }
 
+export async function getPostContent(slug: string) {
+	const markdownFilePath = path.resolve('posts', slug, `${slug}.md`)
+	const markdownContent = await fs.readFile(markdownFilePath, 'utf-8')
+	const { content } = matter(markdownContent)
+	return content.trim()
+}
+
 export async function getPostsByCategory(category: string) {
 	const posts = await getPosts()
 	return posts.filter((post) => !post.draft && post.category === category)

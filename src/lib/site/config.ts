@@ -22,7 +22,7 @@ export const categories = {
 }
 
 // https://github.com/user/repo/blob/main/posts
-export const fileUrl = `https://github.com/blackkspydo/spydo-web-v3/blob/main/posts`
+export const fileUrl = `https://github.com/blackkspydo/spydo-writes/blob/main/posts`
 
 // https://raw.githubusercontent.com/user/repo/main/posts/post-slug/images/image.webp
-export const imagesUrl = `https://raw.githubusercontent.com/blackkspydo/spydo-web-v3/main/posts`
+export const imagesUrl = `https://raw.githubusercontent.com/blackkspydo/spydo-writes/main/posts`
