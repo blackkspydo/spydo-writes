@@ -35,7 +35,17 @@ export async function getPosts() {
 }
 
 export async function getPostContent(slug: string) {
-	const markdownFilePath = path.resolve('posts', slug, `${slug}.md`)
+	if (!/^[a-zA-Z0-9_-]+$/.test(slug)) {
+		throw new Error('Invalid slug')
+	}
+
+	const postsDir = path.resolve('posts')
+	const markdownFilePath = path.resolve(postsDir, slug, `${slug}.md`)
+
+	if (!markdownFilePath.startsWith(postsDir + path.sep)) {
+		throw new Error('Invalid slug')
+	}
+
 	const markdownContent = await fs.readFile(markdownFilePath, 'utf-8')
 	const { content } = matter(markdownContent)
 	return content.trim()
