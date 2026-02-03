@@ -8,7 +8,7 @@ const config = {
 	extensions: ['.svelte', '.md'],
 	preprocess: sequence([markdown(), vitePreprocess(), preprocessMeltUI()]),
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({ runtime: 'nodejs22.x' }),
 	},
 	vitePlugin: {
 		inspector: {
