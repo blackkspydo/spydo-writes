@@ -4,6 +4,7 @@
 
 	import Card from './card.svelte'
 	import Clipboard from './clipboard.svelte'
+	import CodeTabs from './codetabs.svelte'
 	import Overlay from './overlay.svelte'
 	import TableOfContents from './toc.svelte'
 	// import Warning from './warning.svelte'
@@ -33,6 +34,7 @@
 </svelte:head>
 
 <Clipboard />
+<CodeTabs />
 
 <main>
 	<Overlay />

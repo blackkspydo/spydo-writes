@@ -2,7 +2,7 @@
 title: 'Essential Interview Topics Every Developer Should Master'
 description: 'A comprehensive guide to the most asked DSA, machine coding, and system design interview questions, with tips on how to approach each one.'
 slug: essential-interview-topics-for-developers
-published: '2026-02-04'
+published: '2026-02-04T08:00:00'
 category: general
 ---
 
@@ -27,6 +27,8 @@ Read the full breakdown with Python implementations: [Caching in Interviews - LR
 - Merge K Sorted Lists - Min-heap or divide-and-conquer. Classic for understanding priority queues.
 - Kth Largest Element in a Stream - Min-heap of size K.
 - Top K Frequent Elements - Hashmap + heap, or bucket sort for O(n).
+
+Read the full breakdown with Python implementations: [Heaps in Interviews - Priority Queue Problems](/heaps-priority-queue-implementations)
 
 ### Sliding Window & Two Pointers
 

@@ -16,7 +16,8 @@ export function formatDate(
 	locales = 'en'
 ) {
 	// safari is mad about dashes in the date
-	const dateToFormat = new Date(date.replaceAll('-', '/'))
+	const datePart = date.includes('T') ? date.split('T')[0] : date
+	const dateToFormat = new Date(datePart.replaceAll('-', '/'))
 	const dateFormatter = new Intl.DateTimeFormat(locales, { dateStyle })
 	return dateFormatter.format(dateToFormat)
 }

@@ -1,0 +1,104 @@
+.prose {
+	.codetabs {
+		margin-bottom: var(--spacing-24);
+	}
+
+	@media (width >= 600px) {
+		.codetabs {
+			margin-bottom: var(--spacing-32);
+		}
+	}
+
+	@media (width >= 800px) {
+		.codetabs {
+			grid-column: gutter-start / gutter-end;
+		}
+	}
+
+	.codetabs-bar {
+		display: flex;
+		gap: var(--spacing-8);
+		padding: var(--spacing-12) var(--spacing-20);
+		background-color: var(--clr-code-title-bg);
+		border-top: 1px solid var(--clr-code-border);
+		border-left: 1px solid var(--clr-code-border);
+		border-top-left-radius: var(--rounded-20);
+		border-top-right-radius: var(--rounded-20);
+		overflow-x: auto;
+		scrollbar-width: thin;
+	}
+
+	@media (width >= 600px) {
+		.codetabs-bar {
+			padding: var(--spacing-16) var(--spacing-24);
+		}
+	}
+
+	.codetab-button {
+		padding: var(--spacing-8) var(--spacing-16);
+		font-family: var(--font-mono);
+		font-size: 14px;
+		color: var(--clr-code-title);
+		background-color: transparent;
+		border: 1px solid transparent;
+		border-radius: var(--rounded-4);
+		cursor: pointer;
+		white-space: nowrap;
+	}
+
+	html[data-font='dyslexic'] & .codetab-button {
+		font-family: var(--font-dyslexic-mono);
+	}
+
+	.codetab-button:hover {
+		background-color: var(--clr-code-line-highlight);
+	}
+
+	.codetab-button.active {
+		color: var(--clr-primary);
+		border-color: var(--clr-primary);
+		background-color: var(--clr-code-line-highlight);
+	}
+
+	.codetab-button:focus-visible {
+		outline: 2px solid var(--clr-primary);
+		outline-offset: 2px;
+	}
+
+	/* Hide non-first panels before JS initializes to prevent layout shift */
+	.codetab-panel:not(:first-of-type) {
+		display: none;
+	}
+
+	/* Once JS adds the tab bar, show all panels by default */
+	.codetabs:has(.codetabs-bar) .codetab-panel {
+		display: block;
+	}
+
+	/* Hidden panels must beat the show rule above (higher specificity) */
+	.codetabs:has(.codetabs-bar) .codetab-panel[hidden] {
+		display: none;
+	}
+
+	/* Remove top radius and margin from code blocks inside tabs */
+	.codetab-panel .rehype-code-title {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		border-top: none;
+	}
+
+	.codetab-panel > pre:first-child,
+	.codetab-panel > .rehype-code-title + pre {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	}
+
+	.codetab-panel pre {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.codetab-panel .rehype-code-title {
+		margin-top: 0;
+	}
+}

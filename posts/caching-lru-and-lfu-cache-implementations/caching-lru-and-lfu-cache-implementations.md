@@ -2,7 +2,7 @@
 title: 'Caching in Interviews - LRU and LFU Cache Implementations'
 description: 'A hands-on guide to implementing LRU and LFU caches from scratch in Python, with the kind of clarity interviewers expect.'
 slug: caching-lru-and-lfu-cache-implementations
-published: '2026-02-04'
+published: '2026-02-04T10:00:00'
 category: general
 ---
 

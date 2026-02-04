@@ -43,12 +43,29 @@ function getSlug(filename) {
  * @param {string} slug
  */
 function searchAndReplace(content, slug) {
+	const codetabs = /{% codetabs %}([\s\S]*?){% endcodetabs %}/g
 	const embed = /{% embed src="(.*?)" title="(.*?)" %}/g
 	const video = /{% video src="(.*?)" %}/g
 	const image = /{% img src="(.*?)" alt="(.*?)" %}/g
 	const youtube = /{% youtube id="(.*?)" title="(.*?)" %}/g
 
 	return content
+		.replace(codetabs, (_, inner) => {
+			const codeBlockRegex = /```(\w+)[^\n]*\n[\s\S]*?```/g
+			const langRegex = /^```(\w+)/
+			const blocks = inner.match(codeBlockRegex)
+
+			if (!blocks || blocks.length === 0) return inner
+
+			const panels = blocks
+				.map((block) => {
+					const lang = block.match(langRegex)?.[1] || 'text'
+					return `<div class="codetab-panel" data-lang="${lang}">\n\n${block}\n\n</div>`
+				})
+				.join('\n')
+
+			return `<div class="codetabs" data-codetabs-group>\n${panels}\n</div>`
+		})
 		.replace(embed, (_, src, title) => {
 			return `
         <iframe
